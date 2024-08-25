@@ -76,9 +76,10 @@ internal abstract class VirtualizationInstance
         PInvoke.PrjStopVirtualizing(_instanceHandle);
     }
 
-    protected HRESULT WritePlaceholderInfo(string relativePath, PRJ_PLACEHOLDER_INFO placeholderInfo)
+    protected unsafe HRESULT WritePlaceholderInfo(string relativePath, PRJ_PLACEHOLDER_INFO placeholderInfo)
     {
-        return PInvoke.PrjWritePlaceholderInfo(_instanceHandle, relativePath, placeholderInfo, (uint)Marshal.SizeOf(placeholderInfo));
+        return PInvoke.PrjWritePlaceholderInfo(_instanceHandle, relativePath, &placeholderInfo, (uint)Marshal.SizeOf(placeholderInfo));
+        
     }
 
     protected unsafe HRESULT WriteFileData(Guid streamId, IntPtr buffer, ulong byteOffset, uint length)

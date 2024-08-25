@@ -12,7 +12,7 @@ class RegfsProvider : VirtualizationInstance
 {
     // An enumeration session starts when StartDirEnum is invoked and ends when EndDirEnum is invoked.
     // This tracks the active enumeration sessions.
-    readonly Dictionary<Guid, DirInfo> _activeEnumSessions = new();
+    readonly Dictionary<Guid, DirInfo> _activeEnumSessions = [];
     readonly RegOps _regOps = new();
 
     // If this flag is set to true, RegFS will block the following namespace-altering operations
@@ -79,7 +79,7 @@ class RegfsProvider : VirtualizationInstance
     ///   The second and subsequent time you cd into a folder that exists in provider's namespace, this
     ///   callback will not be called because the on-disk placeholder for HKEY_LOCAL_MACHINE already exists.
     ///
-    /// 3) mkdir newfolder
+    /// 3) mkdir new-folder
     ///   If _readonlyNamespace is true, GetPlaceholderInfo returns ERROR_ACCESS_DENIED, so the mkdir command
     ///   reports "Access is denied" and the placeholder is not created.  If _readonlyNamespace is false,
     ///   GetPlaceholderInfo returns ERROR_FILE_NOT_FOUND so the command succeeds and newfolder is created.
@@ -189,7 +189,7 @@ class RegfsProvider : VirtualizationInstance
     /// anything in DirEntryBufferHandle.  ProjFS will return the correct error code to the caller.
     /// 
     /// Below is a list of example commands that will invoke GetDirectoryEntries callbacks.
-    /// These assume you've cd'd into the virtualization root folder.
+    /// These assume you've cd-ed into the virtualization root folder.
     /// 
     /// Command                  CallbackData.FilePathName    SearchExpression
     /// ------------------------------------------------------------------------
@@ -320,11 +320,11 @@ class RegfsProvider : VirtualizationInstance
     /// GetFileStream again.
     /// 
     /// Below is a list of example commands that will invoke GetFileStream callbacks.
-    /// Assume there's a file named 'testfile' in provider's namespace:
+    /// Assume there's a file named 'test_file' in provider's namespace:
     /// 
-    /// type testfile
-    /// echo 123>>testfile
-    /// echo 123>testfile
+    /// type test_file
+    /// echo 123>>test_file
+    /// echo 123>test_file
     /// </summary>
     protected unsafe override HRESULT GetFileData(PRJ_CALLBACK_DATA callbackData, ulong byteOffset, uint length)
     {

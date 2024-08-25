@@ -155,8 +155,8 @@ namespace Windows.Win32
             public uint PoolThreadCount;
             /// <summary>The maximum number of threads the provider wants to run concurrently to process callbacks.</summary>
             public uint ConcurrentThreadCount;
-            /// <summary>An array of zero or more notifiction mappings. See the Remarks section of PRJ_NOTIFICATION MAPPING for more details.</summary>
-            public IList<PrjNotificationMapping> NotificationMappings = new List<PrjNotificationMapping>();
+            /// <summary>An array of zero or more notification mappings. See the Remarks section of PRJ_NOTIFICATION MAPPING for more details.</summary>
+            public IList<PrjNotificationMapping> NotificationMappings = [];
         }
 
         /// <summary>Describes a notification mapping, which is a pairing between a directory (referred to as a &quot;notification root&quot;) and a set of notifications, expressed as a bit mask.</summary>
