@@ -40,7 +40,7 @@ class DirInfo
     const int MAX_PATH = 260;
     int _currIndex;
     bool _entriesFilled;
-    readonly List<DirEntry> _entries = new();
+    readonly List<DirEntry> _entries = [];
 
     public void Reset()
     {

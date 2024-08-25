@@ -35,8 +35,8 @@ struct RegEntries
 
     public RegEntries()
     {
-        SubKeys = new();
-        Values = new();
+        SubKeys = [];
+        Values = [];
     }
 };
 
