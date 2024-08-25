@@ -1,12 +1,6 @@
-﻿using Microsoft.Win32.SafeHandles;
+﻿namespace RegFs;
 using System;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Security;
-using Windows.Win32.Foundation;
 using Windows.Win32.Storage.ProjectedFileSystem;
-
-namespace RegFs;
 
 internal class Program
 {
@@ -53,7 +47,7 @@ internal class Program
 
         Console.WriteLine($"RegFS is running at virtualization root [{rootPath}]");
         Console.WriteLine("Press Enter to stop the provider...");
-        Console.ReadLine();
+        _ = Console.ReadLine();
 
         provider.Stop();
 
